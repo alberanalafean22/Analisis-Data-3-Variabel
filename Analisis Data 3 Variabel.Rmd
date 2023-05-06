@@ -1,0 +1,55 @@
+---
+title: "Analyst of DATA 3 Variable"
+author: "Alber Analafean"
+date: "2023-05-05"
+output: html_document
+---
+
+# Scatterplot 3D
+```{r}
+# dataset iris
+data(iris)
+# library 3D plots
+library(plotly)
+# to make 3D scatter plot
+plot_ly(iris, x = ~Sepal.Length, y = ~Sepal.Width, z = ~Petal.Length,
+        color = ~Species, colors = c("gold", "steelblue", "lightblue")) %>%
+  add_markers() %>%
+  layout(scene = list(xaxis = list(title = "Sepal Length"),
+                       yaxis = list(title = "Sepal Width"),
+                       zaxis = list(title = "Petal Length")))
+```
+#Scatterplot 3D
+```{r}
+library(scatterplot3d)
+data(mtcars)
+with(mtcars, {
+  scatterplot3d(hp, mpg, qsec)
+})
+
+```
+
+
+
+
+# plot 3D
+```{r}
+f <- function(x, y) {sin(sqrt(x+x^4 + y^2))/sqrt(x^2 + y^2)}
+z <- outer(x, y, f)
+plot_ly(x = x, y = y, z = z, type = "surface")
+
+```
+# Contour with 3 variable
+```{r}
+library(plotly)
+library(zoo)
+x <- seq(-10, 10, length.out = 50)
+y <- seq(-10, 10, length.out = 50)
+f <- function(x, y) {cos(x) + (y)- sin(x*y)}
+z <- outer(x, y, f)
+plot_ly(x = x, y = y, z = z, type = "contour")
+
+```
+
+
+
